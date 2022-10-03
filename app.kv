@@ -1,0 +1,44 @@
+<Ball>:
+    size: 50, 50
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<Paddle>:
+    size: 25, 200
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Game>:
+    ball: ball
+	player_1: player_1
+	player_2: player_2
+    canvas:
+        Rectangle:
+            pos: self.center_x - 5, 0
+            size: 10, self.height
+    Label:
+        text: str(root.player_2.score)
+        font_size: 70
+        top: root.top - 50
+        center_x: root.width / 4
+    Label:
+        text: str(root.player_1.score)
+        font_size: 70
+        top: root.top - 50
+        center_x: root.width  * 3/4
+        
+    Ball:
+        id: ball
+        center: self.parent.center
+	Paddle:
+		id: player_1
+		x: root.x + 45
+		center_y: root.center_y
+	Paddle:
+		id: player_2
+		x: root.width - 45
+		center_y: root.center_y
